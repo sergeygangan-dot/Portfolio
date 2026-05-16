@@ -1,0 +1,58 @@
+/* Blob Cursor — reactbits.dev/animations/blob-cursor */
+
+@media (pointer: fine) {
+  body.has-blob-cursor,
+  body.has-blob-cursor a,
+  body.has-blob-cursor button {
+    cursor: none !important;
+  }
+}
+
+.blob-cursor-root {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blob-cursor-root svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.blob-main {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: url(#blob-cursor-filter);
+  mix-blend-mode: screen;
+}
+
+.blob-cursor-root .blob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  will-change: transform;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.blob-cursor-root .inner-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 12px rgba(61, 255, 200, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .blob-cursor-root {
+    display: none !important;
+  }
+}
